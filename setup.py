@@ -4,10 +4,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='dependy',
-    description='Project dependency graphing for refactoring.',
+    description='Project project dependency analysis.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    keywords=['python', 'dependencies', 'graph', 'refactor'],
+    keywords=['python', 'dependencies', 'graph', 'refactor', 'analyzer'],
     version='0.0.0',
     license='Apache Software License',
     author='Chris Gregory',
