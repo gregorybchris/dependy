@@ -1,12 +1,22 @@
+"""Reader for parsing project files and directories."""
+import os
+
 
 class ProjectReader:
+    """Reader for parsing project files and directories."""
     def __init__(self):
         pass
 
-    def read(self, *paths):
+    def read(self, *packages):
         """
         Read in projects to be searched recursively.
         
-        :param paths: Paths of projects to read.
+        :param packages: Package objects to parse.
         """
-        print("Reading...")
+        print(f"Reading {len(packages)} package(s)...")
+        for package in packages:
+            print(f'\tLoading {package.get_name()}...')
+            for root, dirs, files in os.walk(package.get_path()):
+                print('root', root)
+                print('dirs', dirs)
+                print('files', files)
