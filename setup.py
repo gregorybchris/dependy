@@ -18,7 +18,8 @@ setup(
     ],
     extras_require={
         'testing': [
-            'pytest>=5.0.1'
+            'pytest>=5.0.1',
+            'pycodestyle==2.5.0'
         ]
     },
     classifiers=[

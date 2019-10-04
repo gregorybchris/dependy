@@ -7,10 +7,10 @@ class DependencyGraph:
         key = item.get_key()
         self._items[key] = item
         self._dependencies[key] = dict()
-    
-    def has_key(self, key):
+
+    def __contains__(self, key):
         return key in self._items
-    
+
     def has_item(self, item):
         key = item.get_key()
         return key in self._items

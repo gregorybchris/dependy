@@ -1,10 +1,10 @@
 import os
 
+from dependy.logging import logging_utilities
 from dependy.parsing import regex_utils
 from dependy.structure.package_file import PackageFile
 from dependy.structure.package_item import PackageItem
 from dependy.structure.dependency_graph import DependencyGraph
-from dependy.logging import logging_utilities
 
 
 class DependencyParser:
@@ -40,7 +40,7 @@ class DependencyParser:
 
     def _validate_duplicate(self, path):
         key = PackageItem.get_path_key(path)
-        if self._graph.has_key(key):
+        if key in self._graph:
             raise ValueError(f"{path} already exists in package.")
 
     def _validate_file_size(self, path):
@@ -62,6 +62,6 @@ class DependencyParser:
             import_path = regex_utils.extract_path_from_line(line)
             if import_path is not None:
                 self._extract_from_import(import_path)
-                
+
     def _extract_from_import(self, import_line):
         pass
