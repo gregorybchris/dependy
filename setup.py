@@ -8,7 +8,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     keywords=['python', 'dependencies', 'graph', 'refactor', 'analyzer'],
-    version='0.0.1',
+    version='0.0.2',
     license='Apache Software License',
     author='Chris Gregory',
     author_email='christopher.b.gregory@gmail.com',
@@ -19,7 +19,8 @@ setup(
     extras_require={
         'testing': [
             'pytest>=5.0.1',
-            'pycodestyle==2.5.0'
+            'pycodestyle==2.5.0',
+            'pydocstyle==4.0.1'
         ]
     },
     classifiers=[

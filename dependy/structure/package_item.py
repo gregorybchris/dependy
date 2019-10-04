@@ -1,8 +1,7 @@
 import hashlib
 
-from dependy.parsing import regex_utils
-
 from abc import ABC
+
 
 class PackageItem(ABC):
     def __init__(self, name, path):

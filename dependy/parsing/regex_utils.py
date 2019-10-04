@@ -1,9 +1,11 @@
 import os
 import re
 
+
 def is_python_filename(name):
-    result = re.match('[a-zA-Z0-9_]+\.py', name)
+    result = re.match(r'[a-zA-Z0-9_]+\.py', name)
     return bool(result)
+
 
 def extract_path_from_line(line):
     def dotpath(line):

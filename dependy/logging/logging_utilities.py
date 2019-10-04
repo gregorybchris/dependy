@@ -1,14 +1,17 @@
 import logging
 import logging.handlers
 
+
 DEFAULT_LOG_NAME = 'dependy_errors.log'
 DEFAULT_LOG_SIZE = 5000000
 DEFAULT_N_BACKUPS = 5
+
 
 def get_null_logger():
     logger = logging.getLogger('dependy')
     logger.addHandler(logging.NullHandler())
     return logger
+
 
 def get_dependy_logger():
     logger = logging.getLogger('dependy')

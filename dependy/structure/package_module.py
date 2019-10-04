@@ -1,5 +1,6 @@
 from package_item import PackageItem
 
+
 class PackageModule(PackageItem):
     def __init__(self, name, path):
         super(PackageModule, self).__init__(name, path)
