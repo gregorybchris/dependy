@@ -18,4 +18,9 @@ pip install git+https://github.com/gregorybchris/dependy
 
 ## Usage
 
-TODO
+```python
+from dependy.parsing.dependency_parser import DependencyParser
+
+parser_1 = DependencyParser('<package-name>', '<path-to-package>')
+parser_1.parse()
+```
