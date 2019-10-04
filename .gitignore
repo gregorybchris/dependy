@@ -6,6 +6,7 @@ dist
 # Cache
 __pycache__
 *.pyc
+.pytest_cache
 
 # Test Coverage
 .coverage*

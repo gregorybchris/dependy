@@ -1,6 +1,6 @@
 # Dependy
 
-Dependy is a dependency grapher for Python projects. It helps you move around files/packages on your project to clean up dependencies.
+Dependy is a dependency grapher for Python projects. It helps you restructure in order to clean up dependencies.
 
 ## Installation
 

@@ -14,8 +14,7 @@ setup(
     author_email='christopher.b.gregory@gmail.com',
     url='https://github.com/gregorybchris/dependy',
     install_requires=[
-        'pandas==0.24.2',
-        'sentry-sdk==0.10.2'
+        'flask==1.1.1'
     ],
     extras_require={
         'testing': [
