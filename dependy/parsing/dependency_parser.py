@@ -17,7 +17,7 @@ class DependencyParser:
         self._package_name = package_name
         self._package_path = package_path
         self._graph = DependencyGraph()
-        self._logger = logger if logger is not None else logging_utilities.get_dependy_logger()
+        self._logger = logger if logger is not None else logging_utilities.get_logger()
 
     def parse(self):
         self._logger.info(f'Loading: {self._package_name}...')

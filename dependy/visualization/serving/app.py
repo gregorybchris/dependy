@@ -11,7 +11,7 @@ from dependy.visualization.serving.codes import HTTPCodes
 class App:
     def __init__(self, config, logger=None):
         self._config = config
-        self._logger = logger
+        self._logger = logger if logger is not None else logging_utilities.get_logger()
 
         self._app = flask.Flask(__name__, static_url_path='')
         self._register_routes()
@@ -52,6 +52,7 @@ class App:
     def api_get_graph(self):
         graph_path = os.path.join(settings.DEPENDY_CACHE, settings.DEPENDY_GRAPH_FILE)
         if not os.path.exists(graph_path):
+            self._logger.warn("Graph file not found")
             return App.error('Graph file not found', HTTPCodes.ERROR_NOT_FOUND)
         with open(graph_path, 'r') as f:
             graph = json.load(f)
