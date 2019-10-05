@@ -30,9 +30,9 @@ d3.json("static/data/miserables.json", function(error, graph) {
         .attr("r", 5)
         .attr("fill", d => color(d.group))
         .call(d3.drag()
-        .on("start", dragstarted)
+        .on("start", dragStarted)
         .on("drag", dragged)
-        .on("end", dragended))
+        .on("end", dragEnded))
 
     let lables = node.append("text")
         .text(d => d.id)
@@ -59,7 +59,7 @@ d3.json("static/data/miserables.json", function(error, graph) {
     }
 })
 
-function dragstarted(d) {
+function dragStarted(d) {
     if (!d3.event.active)
         simulation.alphaTarget(0.3).restart()
     d.fx = d.x
@@ -71,7 +71,7 @@ function dragged(d) {
     d.fy = d3.event.y
 }
 
-function dragended(d) {
+function dragEnded(d) {
     if (!d3.event.active)
         simulation.alphaTarget(0)
     d.fx = null
