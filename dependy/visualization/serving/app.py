@@ -4,12 +4,14 @@ import os
 import pkg_resources
 
 from dependy.core import settings
+from dependy.logging import logging_utilities
 from dependy.visualization.serving.codes import HTTPCodes
 
 
 class App:
-    def __init__(self, config):
+    def __init__(self, config, logger=None):
         self._config = config
+        self._logger = logger
 
         self._app = flask.Flask(__name__, static_url_path='')
         self._register_routes()
@@ -20,7 +22,7 @@ class App:
         self._app.route('/static/<path:path>', methods=['GET'])(self.get_static_resource)
 
     def _register_api_endpoints(self):
-        self._app.route('/api/info', methods=['GET'])(self.api_get_app_info)
+        self._app.route('/api/info', methods=['GET'])(self.api_get_info)
         self._app.route('/api/config', methods=['GET'])(self.api_get_config)
         self._app.route('/api/graph', methods=['GET'])(self.api_get_graph)
 
@@ -30,7 +32,8 @@ class App:
     def get_static_resource(self, path):
         return flask.send_from_directory('static', path)
 
-    def api_get_app_info(self):
+    @logging_utilities.log_context('get_info', context_tag='api_log')
+    def api_get_info(self):
         info = {
             'author': 'Chris Gregory',
             'index': 'https://pypi.org/project/dependy/',
@@ -41,9 +44,11 @@ class App:
         }
         return flask.jsonify(info)
 
+    @logging_utilities.log_context('get_config', context_tag='api_log')
     def api_get_config(self):
         return flask.jsonify(self._config.serialize())
 
+    @logging_utilities.log_context('get_graph', context_tag='api_log')
     def api_get_graph(self):
         graph_path = os.path.join(settings.DEPENDY_CACHE, settings.DEPENDY_GRAPH_FILE)
         if not os.path.exists(graph_path):

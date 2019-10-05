@@ -1,3 +1,4 @@
+import functools
 import logging
 import logging.handlers
 
@@ -24,3 +25,17 @@ def get_dependy_logger():
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
+
+
+def log_context(name, context_tag='context_log'):
+    logger = get_dependy_logger()
+
+    def decorator(function):
+        @functools.wraps(function)
+        def func_wrapper(*args, **kwargs):
+            logger.info(f"[{context_tag}] Start={name}")
+            result = function(*args, **kwargs)
+            logger.info(f"[{context_tag}] End={name}")
+            return result
+        return func_wrapper
+    return decorator
