@@ -25,8 +25,21 @@ parser = DependencyParser('<package-name>', '<path-to-package>')
 parser.parse()
 ```
 
+```python
+from dependy.visualization.config import VisualizationConfig
+from dependy.visualization.visualizer import Visualizer
+
+config = VisualizationConfig()
+v = Visualizer(config)
+v.start()
+```
+
+## Complete
+
+- [x] Graph visualization in the browser
+
 ## Future
 
 - [ ] Multi-package support
 - [ ] Hierarchical dependency tracking
-- [ ] Graph visualization in the browser
+- [ ] Set up Vue app to be interactive

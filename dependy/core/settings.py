@@ -7,4 +7,5 @@ FLASK_DEBUG = os.getenv('FLASK_DEBUG', 0)
 
 # Storage Settings
 
-DEPENDY_FILES = os.getenv('DEPENDY_FILES', '/tmp/dependy')
+DEPENDY_CACHE = os.getenv('DEPENDY_CACHE', '/tmp/dependy')
+DEPENDY_GRAPH_FILE = os.getenv('DEPENDY_GRAPH_FILE', 'graph.json')
