@@ -1,0 +1,58 @@
+// ~ ~ ~ ~ ~ Fonts ~ ~ ~ ~ ~ 
+
+@font-face {
+    font-family: 'BeVietnam-SemiBold';
+    src: url('../fonts/BeVietnam/BeVietnam-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Bitter-Bold';
+    src: url('../fonts/Bitter/Bitter-Bold.ttf') format('truetype');
+}
+
+// ~ ~ ~ ~ ~ Body ~ ~ ~ ~ ~ ~
+
+body {
+    background-color: #333;
+}
+
+// ~ ~ ~ ~ ~ Header ~ ~ ~ ~ ~ 
+
+.header {
+    background-color: #222;
+    height: 60px;
+}
+
+.title-wrap {
+    padding: 16px 0px 0px 20px;
+}
+
+.title {
+    font-family: 'Bitter-Bold';
+    color: #DDD;
+    font-size: 25px;
+}
+
+// ~ ~ ~ ~ ~ Visualization ~ ~ ~ ~ ~ 
+
+#visualization {
+    text-align: center;
+    margin: 80px auto 0px;
+}
+
+#graph-svg .links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+}
+
+#graph-svg .nodes circle {
+    stroke: #222;
+    stroke-width: 1.5px;
+}
+
+#graph-svg text {
+    font-family: 'BeVietnam-SemiBold';
+    font-size: 10px;
+    fill: #DDD;
+    font-weight: bold;
+}

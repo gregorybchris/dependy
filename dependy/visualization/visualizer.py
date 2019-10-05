@@ -1,9 +1,9 @@
-from dependy.app import main
+from dependy.visualization.serving.app import App
 
 
 class Visualizer:
-    def __init__(self, graph):
-        pass
+    def __init__(self, config):
+        self._app = App(config)
 
     def start(self):
-        main.run()
+        self._app.run()

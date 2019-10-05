@@ -1,3 +1,6 @@
+import json
+
+
 class DependencyGraph:
     def __init__(self):
         self._items = dict()
@@ -23,3 +26,6 @@ class DependencyGraph:
             raise ValueError("Argument item_b not found in the dependency graph.")
 
         self._dependencies[key_a][key_b] = item_b
+
+    def to_json(self):
+        return json.dumps(self._dependencies)
