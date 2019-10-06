@@ -1,7 +1,7 @@
 import os
 
 from dependy.logging import logging_utilities
-from dependy.parsing import regex_utils
+from dependy.parsing import regex_utilities
 from dependy.structure.package_file import PackageFile
 from dependy.structure.package_item import PackageItem
 from dependy.structure.dependency_graph import DependencyGraph
@@ -29,7 +29,7 @@ class DependencyParser:
             for name in module_names:
                 print(f"Skipping module: {name}")
             for name in file_names:
-                if not regex_utils.is_python_filename(name):
+                if not regex_utilities.is_python_filename(name):
                     continue
 
                 path = os.path.join(root, name)
@@ -59,7 +59,7 @@ class DependencyParser:
         with open(path) as f:
             lines = [line.rstrip() for line in f.readlines()]
         for line in lines:
-            import_path = regex_utils.extract_path_from_line(line)
+            import_path = regex_utilities.extract_path_from_line(line)
             if import_path is not None:
                 self._extract_from_import(import_path)
 

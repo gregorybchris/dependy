@@ -24,7 +24,7 @@ def get_logger():
         handler = logging.handlers.RotatingFileHandler(DEFAULT_LOG_NAME,
                                                        maxBytes=DEFAULT_LOG_SIZE,
                                                        backupCount=DEFAULT_N_BACKUPS)
-        formatter = logging.Formatter('%(asctime)s (%(levelname)s) %(message)s',
+        formatter = logging.Formatter('%(asctime)s.%(msecs)03d (%(levelname)s) %(message)s',
                                       datefmt='%Y-%m-%d %H:%M:%S')
         handler.setFormatter(formatter)
         logger.addHandler(handler)
