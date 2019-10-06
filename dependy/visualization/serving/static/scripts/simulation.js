@@ -9,9 +9,31 @@ export class Simulation {
         this.color = d3.scaleOrdinal(d3.schemeCategory20)
 
         this.simulation = d3.forceSimulation()
-            .force("link", d3.forceLink().id(d => d.id))
-            .force("charge", d3.forceManyBody())
+            .force("link", d3.forceLink().id(d => d.id).strength(0.05))
+            .force("charge", d3.forceManyBody(-10))
             .force("center", d3.forceCenter(this.width / 2, this.height / 2))
+
+        this.addSVGDefs()
+        this.simulation.tick(1000)
+        this.simulation.velocityDecay(0.3)
+    }
+
+    addSVGDefs() {
+        // this.svg.append('defs').append('marker')
+        //     .attrs({
+        //         'id': 'arrowhead',
+        //         'viewBox': '-0 -5 10 10',
+        //         'refX': 13,
+        //         'refY': 0,
+        //         'orient': 'auto',
+        //         'markerWidth': 13,
+        //         'markerHeight': 13,
+        //         'xoverflow':' visible'
+        //     })
+        //     .append('svg:path')
+        //     .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+        //     .attr('fill', '#999')
+        //     .style('stroke', 'none');
     }
 
     simulate() {
@@ -21,6 +43,7 @@ export class Simulation {
             .data(this.graph.links)
             .enter().append("line")
             .attr("stroke-width", d => Math.sqrt(d.value))
+            // .attr('marker-end', 'url(#arrowhead)')
 
         let node = this.svg.append("g")
             .attr("class", "nodes")
@@ -39,7 +62,7 @@ export class Simulation {
         let lables = node.append("text")
             .text(d => d.id)
             .attr('x', 9)
-            .attr('y', 3)
+            .attr('y', 4)
 
         node.append("title")
             .text(d => d.id)

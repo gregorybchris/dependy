@@ -8,15 +8,21 @@ def is_python_filename(name):
 
 
 def extract_path_from_line(line):
-    def dotpath(line):
-        return line.replace('.', os.sep)
+    def dotsep(line):
+        return line.replace('.', os.path.sep)
+
+    def topy(path):
+        return f'{path}.py'
 
     search = re.search(r'^import ([a-z0-9_\.]+)$', line)
     if search:
-        return search.group(1).replace('.', os.sep)
+        return topy(dotsep(search.group(1)))
 
     search = re.search(r'^from ([a-z0-9_\.]+) import ([a-zA-Z0-9_]+)$', line)
     if search:
-        return os.path.join(dotpath(search.group(1)), dotpath(search.group(2)))
+        if search.group(2)[0].isupper():
+            return topy(dotsep(search.group(1)))
+        else:
+            return topy(os.path.join(dotsep(search.group(1)), dotsep(search.group(2))))
 
     return None

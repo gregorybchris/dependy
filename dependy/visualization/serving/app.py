@@ -50,10 +50,12 @@ class App:
 
     @logging_utilities.log_context('get_graph', context_tag='api_log')
     def api_get_graph(self):
-        graph_path = os.path.join(settings.DEPENDY_CACHE, settings.DEPENDY_GRAPH_FILE)
+        graph_file_name = settings.DEPENDY_GRAPH_FILE
+        graph_path = os.path.join(settings.DEPENDY_CACHE, graph_file_name)
         if not os.path.exists(graph_path):
-            self._logger.warn("Graph file not found")
+            self._logger.error("Graph file not found")
             return App.error('Graph file not found', HTTPCodes.ERROR_NOT_FOUND)
+        self._logger.info(f"Found graph file: {graph_file_name}")
         with open(graph_path, 'r') as f:
             graph = json.load(f)
         return flask.jsonify(graph)
