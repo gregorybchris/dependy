@@ -7,7 +7,7 @@ DEFAULT_LOG_NAME = 'dependy_errors.log'
 DEFAULT_LOG_SIZE = 5000000
 DEFAULT_N_BACKUPS = 5
 
-created_logger = False
+logger_created = False
 
 
 def get_null_logger():
@@ -17,9 +17,9 @@ def get_null_logger():
 
 
 def get_logger():
-    global created_logger
+    global logger_created
     logger = logging.getLogger('dependy')
-    if not created_logger:
+    if not logger_created:
         logger.setLevel(logging.DEBUG)
         handler = logging.handlers.RotatingFileHandler(DEFAULT_LOG_NAME,
                                                        maxBytes=DEFAULT_LOG_SIZE,
@@ -28,7 +28,7 @@ def get_logger():
                                       datefmt='%Y-%m-%d %H:%M:%S')
         handler.setFormatter(formatter)
         logger.addHandler(handler)
-        created_logger = True
+        logger_created = True
     return logger
 
 
