@@ -8,7 +8,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     keywords=['python', 'dependencies', 'graph', 'refactor', 'analyzer'],
-    version='0.0.3',
+    version='0.1.0',
     license='Apache Software License',
     author='Chris Gregory',
     author_email='christopher.b.gregory@gmail.com',
