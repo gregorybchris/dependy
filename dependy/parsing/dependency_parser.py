@@ -5,7 +5,6 @@ from dependy.core import settings
 from dependy.logging import logging_utilities
 from dependy.parsing import regex_utilities
 from dependy.structure.package_file import PackageFile
-from dependy.structure.package_item import PackageItem
 from dependy.structure.dependency_graph import DependencyGraph
 
 
@@ -50,7 +49,6 @@ class DependencyParser:
             for file_name in file_names:
                 # print("Processing file: ", file_name)
                 if not regex_utilities.is_python_filename(file_name):
-                    print("Not Python: ", file_name)
                     continue
 
                 file_path = os.path.join(root, file_name)

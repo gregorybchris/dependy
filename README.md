@@ -21,7 +21,7 @@ pip install git+https://github.com/gregorybchris/dependy
 ```python
 from dependy.parsing.dependency_parser import DependencyParser
 
-parser = DependencyParser('<package-name>', '<path-to-package>')
+parser = DependencyParser('<path-to-package>')
 parser.parse()
 ```
 
@@ -42,4 +42,4 @@ v.start()
 
 - [ ] Multi-package support
 - [ ] Hierarchical dependency tracking
-- [ ] Set up Vue app to be interactive
+- [ ] Make app interactive

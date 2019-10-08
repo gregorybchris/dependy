@@ -3,8 +3,9 @@ import logging
 import logging.handlers
 import time
 
+from dependy.core import settings
 
-DEFAULT_LOG_NAME = 'dependy_errors.log'
+
 DEFAULT_LOG_SIZE = 5000000
 DEFAULT_N_BACKUPS = 5
 
@@ -22,7 +23,7 @@ def get_logger():
     logger = logging.getLogger('dependy')
     if not logger_created:
         logger.setLevel(logging.DEBUG)
-        handler = logging.handlers.RotatingFileHandler(DEFAULT_LOG_NAME,
+        handler = logging.handlers.RotatingFileHandler(settings.LOG_FILE_NAME,
                                                        maxBytes=DEFAULT_LOG_SIZE,
                                                        backupCount=DEFAULT_N_BACKUPS)
         formatter = logging.Formatter('%(asctime)s.%(msecs)03d (%(levelname)s) %(message)s',

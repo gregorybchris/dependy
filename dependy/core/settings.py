@@ -9,3 +9,7 @@ FLASK_DEBUG = os.getenv('FLASK_DEBUG', 0)
 
 DEPENDY_CACHE = os.getenv('DEPENDY_CACHE', '/tmp/dependy')
 DEPENDY_GRAPH_FILE = os.getenv('DEPENDY_GRAPH_FILE', 'graph.json')
+
+# Logging Settings
+
+LOG_FILE_NAME = os.getenv('DEPENDY_LOG_FILE', 'dependy.log')
