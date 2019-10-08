@@ -20,6 +20,12 @@ pip install git+https://github.com/gregorybchris/dependy
 
 ## Usage
 
+### Command Line
+```bash
+dependy -p "full/path/to/my/package"
+```
+
+### Python Script
 ```python
 from dependy.core.dependy_config import DependyConfig
 from dependy.parsing.dependency_parser import DependencyParser
