@@ -18,20 +18,24 @@ pip install git+https://github.com/gregorybchris/dependy
 
 ## Usage
 
+### Create a graph representation of your package
 ```python
+from dependy.parsing.parsing_config import ParsingConfig
 from dependy.parsing.dependency_parser import DependencyParser
 
-parser = DependencyParser('<path-to-package>')
-parser.parse()
+config = ParsingConfig(graph_filename='graph.json')
+parser = DependencyParser('full/path/to/my/package', config=config)
+parser.parse_dependencies()
 ```
 
+### Visualize that graph in the browser
 ```python
-from dependy.visualization.config import VisualizationConfig
+from dependy.visualization.visualization_config import VisualizationConfig
 from dependy.visualization.visualizer import Visualizer
 
-config = VisualizationConfig()
-v = Visualizer(config)
-v.start()
+config = VisualizationConfig(port=5000, debug=True, graph_filename='graph.json')
+visualizer = Visualizer(config=config)
+visualizer.start()
 ```
 
 ## Complete

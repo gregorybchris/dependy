@@ -66,14 +66,8 @@ class App:
         return (flask.jsonify(message=str(message)), code)
 
     def run(self):
-        port = None
-        if self._config.port is None:
-            port = settings.FLASK_RUN_PORT
-        debug = None
-        if self._config.debug is None:
-            debug = settings.FLASK_DEBUG
-        host = None
-        if self._config.host is None:
-            host = 'localhost'
+        port = self._config.port if self._config.port is not None else settings.FLASK_RUN_PORT
+        debug = self._config.debug if self._config.debug is not None else settings.FLASK_DEBUG
+        debug = 1 if bool(debug) else 0
 
-        self._app.run(host=host, port=port, debug=debug)
+        self._app.run(port=port, debug=debug)

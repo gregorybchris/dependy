@@ -1,18 +1,15 @@
 class VisualizationConfig:
     def __init__(self,
-                 host=None,
                  port=None,
                  debug=None,
-                 graph=None):
-        self.host = host
+                 graph_filename=None):
         self.port = port
         self.debug = debug
-        self.graph = graph
+        self.graph_filename = graph_filename
 
     def serialize(self):
         return {
-            'host': self.host,
             'port': self.port,
             'debug': self.debug,
-            'graph': self.graph
+            'graph_filename': self.graph_filename
         }
