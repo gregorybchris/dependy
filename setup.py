@@ -8,7 +8,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     keywords=['python', 'dependencies', 'graph', 'refactor', 'analyzer'],
-    version='0.1.2',
+    version='0.1.3',
     license='Apache Software License',
     author='Chris Gregory',
     author_email='christopher.b.gregory@gmail.com',
@@ -32,5 +32,6 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.7'
     ],
-    packages=find_packages(exclude=['tests'])
+    packages=find_packages(exclude=['tests']),
+    include_package_data=True
 )
