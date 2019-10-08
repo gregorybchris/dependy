@@ -109,7 +109,8 @@ class DependencyParser:
         graph_dict = self._graph.serialize()
         graph_json = json.dumps(graph_dict)
         graph_path = os.path.join(cache_path, graph_filename)
-        os.makedirs(cache_path)
+        if not os.path.exists(cache_path):
+            os.makedirs(cache_path)
         self._logger.info(f"Saving graph to \"{graph_path}\"")
         with open(graph_path, 'w') as f:
             f.write(graph_json)
