@@ -6,4 +6,4 @@ def test_log_context():
     def test_func(a):
         assert a == 4
 
-    test_func(5)
+    test_func(4)
