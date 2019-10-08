@@ -1,5 +1,7 @@
 # Dependy
 
+[![codecov](https://codecov.io/gh/gregorybchris/dependy/branch/master/graph/badge.svg?token=1kwR72lEIQ)](https://codecov.io/gh/gregorybchris/dependy)
+
 Dependy is a dependency grapher for Python projects. Use this tool to efficiently restructure code and clean up dependencies.
 
 ## Installation
