@@ -21,7 +21,7 @@ pip install git+https://github.com/gregorybchris/dependy
 ```python
 from dependy.core.dependy_config import DependyConfig
 from dependy.parsing.dependency_parser import DependencyParser
-from dependy.visualization.visualizer import Visualizer
+from dependy.visual.visualizer import Visualizer
 
 # Create a configuration to be used by dependy
 config = DependyConfig(graph_filename='graph.json', port=5000, debug=False)

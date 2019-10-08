@@ -1,5 +1,5 @@
 from dependy.core.dependy_config import DependyConfig
-from dependy.visualization.serving.app import App
+from dependy.visual.serving.app import App
 
 
 class Visualizer:

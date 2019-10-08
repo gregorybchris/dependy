@@ -5,7 +5,7 @@ import pkg_resources
 
 from dependy.core import settings
 from dependy.logging import logging_utilities
-from dependy.visualization.serving.codes import HTTPCodes
+from dependy.visual.serving.codes import HTTPCodes
 
 
 class App:
