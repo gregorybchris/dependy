@@ -1,6 +1,7 @@
 import functools
 import logging
 import logging.handlers
+import time
 
 
 DEFAULT_LOG_NAME = 'dependy_errors.log'
@@ -32,15 +33,17 @@ def get_logger():
     return logger
 
 
-def log_context(name, context_tag='context_log'):
+def log_context(name, context_tag='='):
     logger = get_logger()
 
     def decorator(function):
         @functools.wraps(function)
         def func_wrapper(*args, **kwargs):
-            logger.info(f"[{context_tag}] Start={name}")
+            start_time = time.time()
+            logger.info(f"[{context_tag}] Start:{name}")
             result = function(*args, **kwargs)
-            logger.info(f"[{context_tag}] End={name}")
+            total_time = round(time.time() - start_time, 5)
+            logger.info(f"[{context_tag}] End:{name}, Time:{total_time}")
             return result
         return func_wrapper
     return decorator

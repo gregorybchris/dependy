@@ -1,0 +1,1 @@
+recursive-include dependy/visualization/serving/static *.ttf *.js *.html *.css *.less *.ico

@@ -26,13 +26,14 @@ class App:
         self._app.route('/api/config', methods=['GET'])(self.api_get_config)
         self._app.route('/api/graph', methods=['GET'])(self.api_get_graph)
 
+    @logging_utilities.log_context('get_index', context_tag='api')
     def get_index(self):
         return flask.current_app.send_static_file('pages/index.html')
 
     def get_static_resource(self, path):
         return flask.send_from_directory('static', path)
 
-    @logging_utilities.log_context('get_info', context_tag='api_log')
+    @logging_utilities.log_context('get_info', context_tag='api')
     def api_get_info(self):
         info = {
             'author': 'Chris Gregory',
@@ -44,11 +45,11 @@ class App:
         }
         return flask.jsonify(info)
 
-    @logging_utilities.log_context('get_config', context_tag='api_log')
+    @logging_utilities.log_context('get_config', context_tag='api')
     def api_get_config(self):
         return flask.jsonify(self._config.serialize())
 
-    @logging_utilities.log_context('get_graph', context_tag='api_log')
+    @logging_utilities.log_context('get_graph', context_tag='api')
     def api_get_graph(self):
         graph_file_name = settings.DEPENDY_GRAPH_FILE
         graph_path = os.path.join(settings.DEPENDY_CACHE, graph_file_name)
@@ -64,11 +65,15 @@ class App:
     def error(message, code):
         return (flask.jsonify(message=str(message)), code)
 
-    def run(self, host='localhost', port=None, debug=None):
-        if port is None:
+    def run(self):
+        port = None
+        if self._config.port is None:
             port = settings.FLASK_RUN_PORT
-
-        if debug is None:
+        debug = None
+        if self._config.debug is None:
             debug = settings.FLASK_DEBUG
+        host = None
+        if self._config.host is None:
+            host = 'localhost'
 
         self._app.run(host=host, port=port, debug=debug)
