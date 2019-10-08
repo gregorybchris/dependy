@@ -2,9 +2,9 @@ import json
 import os
 
 from dependy.core import settings
+from dependy.core.dependy_config import DependyConfig
 from dependy.logging import logging_utilities
 from dependy.parsing import regex_utilities
-from dependy.parsing.parsing_config import ParsingConfig
 from dependy.structure.package_file import PackageFile
 from dependy.structure.dependency_graph import DependencyGraph
 
@@ -19,7 +19,7 @@ class DependencyParser:
         self._package_name = DependencyParser._get_dir_name(package_path)
         self._package_path = package_path
         self._graph = DependencyGraph()
-        self._config = config if config is not None else ParsingConfig()
+        self._config = config if config is not None else DependyConfig()
         self._logger = logger if logger is not None else logging_utilities.get_logger()
 
     @logging_utilities.log_context('parse_dependencies', context_tag='parser')
