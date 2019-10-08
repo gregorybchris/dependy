@@ -41,28 +41,20 @@ class DependencyParser:
 
     def _parse_path(self, path):
         for root, module_names, file_names in os.walk(path):
-            to_ignore = ['__pycache__', 'static']
-            if DependencyParser._any_in(to_ignore, root):
+            if DependencyParser._any_in(['__pycache__', 'static'], root):
                 continue
 
-            # print("\nroot: ", root)
-            # print("module_names: ", module_names)
-            # print("file_names: ", file_names)
-
             for file_name in file_names:
-                # print("Processing file: ", file_name)
                 if not regex_utilities.is_python_filename(file_name):
                     continue
                 if DependencyParser._is_blacklist_file(file_name):
                     continue
 
                 file_path = os.path.join(root, file_name)
-                # self._validate_duplicate(file_path)
                 DependencyParser._validate_file_size(file_path)
                 self._register_file(file_name, file_path)
 
             for module_name in module_names:
-                # print("Processing module: ", module_name)
                 module_path = os.path.join(root, module_name)
                 self._register_module(module_name, module_path)
 
@@ -117,6 +109,7 @@ class DependencyParser:
         graph_dict = self._graph.serialize()
         graph_json = json.dumps(graph_dict)
         graph_path = os.path.join(cache_path, graph_filename)
+        os.makedirs(cache_path)
         self._logger.info(f"Saving graph to \"{graph_path}\"")
         with open(graph_path, 'w') as f:
             f.write(graph_json)
