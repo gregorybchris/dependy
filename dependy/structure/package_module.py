@@ -1,4 +1,4 @@
-from package_item import PackageItem
+from dependy.structure.package_item import PackageItem
 
 
 class PackageModule(PackageItem):
